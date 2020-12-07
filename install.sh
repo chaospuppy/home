@@ -37,14 +37,14 @@ function install_nvim() {
 }
 
 
-#function install_tmux() {
-#    cd && ln -s $HOME/.dotfiles/vim-config/tmux.conf .tmux.conf | tee -a $logfile
-#}
+function install_tmux() {
+    cd && ln -s $HOME/.dotfiles/vim-config/tmux.conf .tmux.conf | tee -a $logfile
+}
 
 
-#
+
 #   TODO: Switch out package manager
-#
+
 function install_commands() {
 
     # Install and update all plugins
@@ -77,7 +77,7 @@ function main() {
     touch $logfile
     install_commands
     install_nvim
-    #install_tmux
+#    install_tmux
 }
 
 main

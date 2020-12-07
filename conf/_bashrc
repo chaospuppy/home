@@ -109,6 +109,6 @@ fi
 
 complete -C /usr/bin/vault vault
 
-source ~/Tools/linux-home/run_commands/shell_prompt
+#source ~/Tools/linux-home/run_commands/shell_prompt
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
