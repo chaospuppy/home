@@ -1,0 +1,1 @@
+- Is the caveat to the first step of the README a feature or a bug?
