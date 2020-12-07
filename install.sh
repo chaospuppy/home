@@ -77,7 +77,7 @@ function main() {
     touch $logfile
     install_commands
     install_nvim
-#    install_tmux
+    install_tmux
 }
 
 main
