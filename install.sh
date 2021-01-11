@@ -42,8 +42,9 @@ function install_tmux() {
 }
 
 
+#
 #   TODO: Switch out package manager
-
+#
 function install_commands() {
 
     # Install and update all plugins
@@ -75,8 +76,8 @@ function install_commands() {
 function main() {
     touch $logfile
     install_commands
-    install_tmux
     install_nvim
+#    install_tmux
 }
 
 main
