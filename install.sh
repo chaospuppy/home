@@ -42,7 +42,6 @@ function install_tmux() {
 }
 
 
-
 #   TODO: Switch out package manager
 
 function install_commands() {
@@ -66,7 +65,7 @@ function install_commands() {
 
     if hash nvim 2>/dev/null; then
         # nvim is installed
-        nvim +PlugInstall +PlugUpdate +qa
+        nvim +PlugUpgrade +PlugInstall +PlugUpdate +qa
     else
         printf "You need to install neovim before moving on.\n" | tee -a $logfile
     fi
@@ -76,8 +75,8 @@ function install_commands() {
 function main() {
     touch $logfile
     install_commands
-    install_nvim
     install_tmux
+    install_nvim
 }
 
 main
