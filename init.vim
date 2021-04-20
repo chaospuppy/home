@@ -21,6 +21,7 @@ else
     """""""""""""""""""""""""""
     call plug#begin('~/.vim/plugged')
 
+    Plug 'tomlion/vim-solidity'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
     Plug 'itchyny/lightline.vim'
     Plug 'tomtom/tcomment_vim'
@@ -34,12 +35,14 @@ else
     Plug 'xolox/vim-misc'
     Plug 'cespare/vim-toml'
     Plug 'itchyny/vim-gitbranch'
+    Plug 'pongloss/vim-javascript'
 
     " Language specific
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
     Plug 'hashivim/vim-terraform'
     Plug 'leafgarland/typescript-vim'
+    Plugin 'morhetz/gruvbox'
     Plug 'https://github.com/octol/vim-cpp-enhanced-highlight.git'
 
     " Colorschemes
