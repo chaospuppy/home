@@ -35,7 +35,7 @@ else
     Plug 'xolox/vim-misc'
     Plug 'cespare/vim-toml'
     Plug 'itchyny/vim-gitbranch'
-    Plug 'pongloss/vim-javascript'
+    Plug 'pangloss/vim-javascript'
     Plug 'elzr/vim-json'
 
     " Language specific
