@@ -43,7 +43,7 @@ else
     Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
     Plug 'hashivim/vim-terraform'
     Plug 'leafgarland/typescript-vim'
-    Plugin 'morhetz/gruvbox'
+    Plug 'morhetz/gruvbox'
     Plug 'https://github.com/octol/vim-cpp-enhanced-highlight.git'
 
     " Colorschemes
