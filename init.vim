@@ -36,6 +36,7 @@ else
     Plug 'cespare/vim-toml'
     Plug 'itchyny/vim-gitbranch'
     Plug 'pongloss/vim-javascript'
+    Plug 'elzr/vim-json'
 
     " Language specific
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
