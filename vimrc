@@ -11,7 +11,7 @@ autocmd BufNewFile,BufRead *.tex set filetype=tex
 autocmd BufWritePre * %s/\s\+$//e
 
 set showmode
-set number relativenumber
+set number
 
 set splitbelow
 set splitright
