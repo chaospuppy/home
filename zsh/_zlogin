@@ -1,0 +1,2 @@
+# Kubectl shell completion
+source '/Users/tim.seagren/.kube/completion.zsh.inc'

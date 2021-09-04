@@ -4,7 +4,7 @@ GOROOT=/usr/local/go
 #GO111MODULE=auto
 GOBIN=$GOROOT/bin:$HOME/go/bin
 KREW_ROOT=$HOME/.krew
-PATH=$PATH:${KREW_ROOT:-$HOME/.krew}/bin:$GOBIN:/opt/local/sbin:/usr/local/bin:/usr/bin
+PATH=$PATH:${KREW_ROOT:-$HOME/.krew}/bin:$GOBIN:/opt/local/sbin:/usr/local/bin:/usr/bin:$PYENV_ROOT/bin:${HOME}/.tgenv/bin:${HOME}/.istioctl/bin/
 
 #pyenv settings
 export PYENV_ROOT="$HOME/.pyenv"
@@ -24,6 +24,12 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 
+# kubectl editor
+KUBE_EDITOR=nvim
+
+bindkey -v
+bindkey '^r' history-incremental-search-backward
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -31,8 +37,7 @@ HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 alias vi=nvim
 alias vim=nvim
 alias k=kubectl
-alias solidity="docker run -v ${HOME}/workspace/solidity:/sources --rm ethereum/solc:stable -o /sources/output --abi --bin $@"
-alias geth="docker run -v ~/.ethereum/:/root/.ethereum --rm -p 30303:30303 -p 8545:8545 ethereum/client-go:stable $@"
+alias sshuttle-proxy='python ~/.local/bin/sshuttle -r "maintuser@10.109.0.207" --dns -v 10.0.0.0/8 --ssh-cmd "ssh -D localhost:12345"'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -46,19 +51,19 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-function sha256sum() { shasum -a 256 "$@" ; }
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/timseagren/.oh-my-zsh"
+export ZSH="/Users/tim.seagren/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+#ZSH_THEME="kphoen"
+# ZSH_THEME="spaceship"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -120,7 +125,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+#plugins=(git docker kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -149,5 +154,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-PROMPT='$(kube_ps1)'$PROMPT
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
