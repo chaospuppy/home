@@ -1,24 +1,13 @@
-#
-#
-#   Install and configure NeoVim
-#
-#   James Petersen
-#
-#   TODO: Check for everything before moving on
-#   TODO: Use an https option, default to ssh
-#
-
 logfile='/tmp/vim-config.log'
 
 mkdir -p $HOME/.dotfiles
 
 function install_nvim() {
-    # Clone the config repo
+    # Create sylink for vim configuration
     if [ ! -d $HOME/.dotfiles/vim-config ]; then
-        git clone https://github.com/found-it/vim-config.git $HOME/.dotfiles/vim-config
+        ln -s ${PWD}/vim $HOME/.dotfiles/vim-config
     else
-        printf "vim-config exists - no need to clone\n" | tee -a $logfile
-        # TODO: git pull?
+        printf "vim-config exists - no need to copy it\n" | tee -a $logfile
     fi
 
     # Grab vim-plug
@@ -32,23 +21,22 @@ function install_nvim() {
 
     # Set up NeoVim Configuration
     mkdir -p $HOME/.config/nvim
-    cd $HOME/.config/nvim && ln -s $HOME/.dotfiles/vim-config/init.vim init.vim | tee -a $logfile
-    cd $HOME/.config/nvim && ln -s $HOME/.dotfiles/vim-config/settings.json settings.json | tee -a $logfile
+    ln -s $HOME/.config/nvim ${PWD}/vim/init.vim | tee -a $logfile
+    ln -s $HOME/.config/nvim ${PWD}/vim/settings.json | tee -a $logfile
 }
 
 
 function install_tmux() {
-    cd && ln -s $HOME/.dotfiles/vim-config/tmux.conf .tmux.conf | tee -a $logfile
+  if [ ! -f ${HOME}/.tmux.conf ]; then
+    ln -s $PWD/tmux/_tmux.conf ${HOME}/.tmux.conf | tee -a $logfile
+  else
+    echo "~/.tmux.conf already exists, not replacing"
+  fi
 }
 
-
-#
-#   TODO: Switch out package manager
-#
 function install_commands() {
 
     # Install and update all plugins
-
     declare -a cmds=(
         "nvim"
         "tree"
@@ -72,12 +60,27 @@ function install_commands() {
     fi
 }
 
+function install_zsh_preferences() {
+  declare -a files=(
+  ".zshrc"
+  ".zprofile"
+  ".zlogin"
+  )
+  for file in "${files[@]}"; do
+    if [ ! -f ${HOME}/$file ]; then
+      ln -s ${PWD}/zsh/`echo $file | gsed -e 's/\./_/g'` ${HOME}/$file
+    else
+      echo "${PWD}/zsh/$file already exists"
+    fi
+  done
+}
 
 function main() {
     touch $logfile
     install_commands
     install_nvim
-#    install_tmux
+    install_tmux
+    install_zsh_preferences
 }
 
 main
