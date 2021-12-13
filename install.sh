@@ -21,8 +21,8 @@ function install_nvim() {
 
     # Set up NeoVim Configuration
     mkdir -p $HOME/.config/nvim
-    ln -s $HOME/.config/nvim ${PWD}/vim/init.vim | tee -a $logfile
-    ln -s $HOME/.config/nvim ${PWD}/vim/settings.json | tee -a $logfile
+    ln -s ${PWD}/vim/init.vim $HOME/.config/nvim | tee -a $logfile
+    ln -s ${PWD}/vim/settings.json $HOME/.config/nvim | tee -a $logfile
 }
 
 

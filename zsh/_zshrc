@@ -169,3 +169,5 @@ if [ -f '/Users/timseagren/.local/share/google-cloud-sdk/completion.zsh.inc' ]; 
 source $HOME/.kube/completion.zsh.inc
 export GETMESH_HOME="$HOME/.getmesh"
 export PATH="$GETMESH_HOME/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
