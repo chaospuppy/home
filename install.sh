@@ -60,6 +60,12 @@ function install_commands() {
     fi
 }
 
+function install_alacritty_config {
+  if [ ! -f ${HOME}/.config/alacritty/alacritty.yml ]; then
+    ln -s ${PWD}/alacritty/alacritty.yml ${HOME}/.config/alacritty/alacritty.yml
+  fi
+}
+
 function install_zsh_preferences() {
   declare -a files=(
   ".zshrc"
@@ -81,6 +87,7 @@ function main() {
     install_nvim
     install_tmux
     install_zsh_preferences
+    install_alacritty_config
 }
 
 main
