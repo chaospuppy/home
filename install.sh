@@ -1,3 +1,4 @@
+#!/bin/bash
 logfile='/tmp/vim-config.log'
 
 mkdir -p $HOME/.dotfiles
@@ -74,7 +75,11 @@ function install_zsh_preferences() {
   )
   for file in "${files[@]}"; do
     if [ ! -f ${HOME}/$file ]; then
-      ln -s ${PWD}/zsh/`echo $file | gsed -e 's/\./_/g'` ${HOME}/$file
+      if [ command gsed -v 1>/dev/null 2>&1 ]; then
+        ln -s ${PWD}/zsh/`echo $file | gsed -e 's/\./_/g'` ${HOME}/$file
+      else
+        ln -s ${PWD}/zsh/`echo $file | sed -e 's/\./_/g'` ${HOME}/$file
+      fi
     else
       echo "${PWD}/zsh/$file already exists"
     fi
