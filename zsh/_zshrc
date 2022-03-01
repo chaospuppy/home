@@ -170,4 +170,7 @@ source $HOME/.kube/completion.zsh.inc
 export GETMESH_HOME="$HOME/.getmesh"
 export PATH="$GETMESH_HOME/bin:$PATH"
 
+# Kubectl completion
+source $HOME/.lima/completion.zsh.inc
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

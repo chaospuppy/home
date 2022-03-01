@@ -45,6 +45,7 @@ else
     Plug 'leafgarland/typescript-vim'
     Plug 'morhetz/gruvbox'
     Plug 'https://github.com/octol/vim-cpp-enhanced-highlight.git'
+    Plug 'https://github.com/vim-python/python-syntax.git'
 
     " Colorschemes
     Plug 'sjl/badwolf'
@@ -136,6 +137,10 @@ else
     let g:terraform_align=1
     let g:terraform_fmt_on_save=1
     " Terraform Configs
+
+    " Python Configs
+    let g:python_highlight_all = 1
+    let g:python3_host_prog = expand('python')
 
     " Semshi Config
     nmap <silent> <leader>rr :Semshi rename<CR>
