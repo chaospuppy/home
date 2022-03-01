@@ -31,8 +31,6 @@ else
     Plug 'junegunn/fzf.vim'
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-    Plug 'xolox/vim-notes'
-    Plug 'xolox/vim-misc'
     Plug 'cespare/vim-toml'
     Plug 'itchyny/vim-gitbranch'
     Plug 'pangloss/vim-javascript'
@@ -70,8 +68,8 @@ else
     map ; :Files<CR>
 
     " Note taking mods
-    map - :Note
-    let g:notes_directories = ['~/notes/']
+    " map - :Note
+    " let g:notes_directories = ['~/notes/']
 
     " LightLine mods
     let g:lightline = {
@@ -112,6 +110,12 @@ else
     let g:go_highlight_array_whitespace_error = 1
     let g:go_highlight_chan_whitespace_error = 1
     let g:go_highlight_space_tab_error = 1
+
+    let g:go_def_mode='gopls'
+    let g:go_info_mode='gopls'
+
+    nmap <silent> <leader>gd :GoDef<CR>
+    nmap <silent> <leader>gdp :GoDefPop<CR>
     " Golang Configuration
 
 
