@@ -30,10 +30,14 @@ HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Alias definitions.
+# Alias definitions for vim
 alias vi=nvim
 alias vim=nvim
+
+# DevOps
 alias k=kubectl
+
+# Eth
 alias solidity="docker run -v ${HOME}/workspace/solidity:/sources --rm ethereum/solc:stable -o /sources/output --abi --bin $@"
 alias geth="docker run -v ~/.ethereum/:/root/.ethereum --rm -p 30303:30303 -p 8545:8545 ethereum/client-go:stable $@"
 
