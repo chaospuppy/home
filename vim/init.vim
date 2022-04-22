@@ -113,6 +113,8 @@ else
     let g:go_highlight_space_tab_error = 1
     " Golang Configuration
 
+    " Python configuration
+    let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
 
     " Language server configuration
     let g:LanguageClient_serverCommands = {

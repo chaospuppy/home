@@ -66,24 +66,27 @@ scrolling:
 font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
+
   normal:
-    family: Iosevka
-    style: Light
+    family: "MesloLGS NF"
+  # normal:
+  #   family: Iosevka
+  #   style: Light
     # family: "Fira Code"
     # family: "Source Code Pro"
     # style: Retina
 
   # The bold font face
-  bold:
-    family: Iosevka
-    style: Medium
-    # family: "Fira Code"
-    # family: "Source Code Pro"
-
-  # The italic font face
-  italic:
-    family: Iosevka
-    style: "Light Italic"
+  # bold:
+  #   family: Iosevka
+  #   style: Medium
+  #   # family: "Fira Code"
+  #   # family: "Source Code Pro"
+  #
+  # # The italic font face
+  # italic:
+  #   family: Iosevka
+  #   style: "Light Italic"
     # style: "Light Oblique"
     # family: "Fira Code"
     # family: "Source Code Pro"
