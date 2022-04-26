@@ -599,6 +599,9 @@ shell:
   #args:
   #  - --login
   program: /bin/zsh
+  args:
+    - -c
+    - /opt/homebrew/bin/tmux && exec zsh
 
 debug:
   # Should display the render timer
