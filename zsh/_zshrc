@@ -25,10 +25,14 @@ HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Alias definitions.
+# Alias definitions for vim
 alias vi=nvim
 alias vim=nvim
+
+# DevOps
 alias k=kubectl
+
+# Eth
 alias solidity="docker run -v ${HOME}/workspace/solidity:/sources --rm ethereum/solc:stable -o /sources/output --abi --bin $@"
 alias geth="docker run -v ~/.ethereum/:/root/.ethereum --rm -p 30303:30303 -p 8545:8545 ethereum/client-go:stable $@"
 
@@ -48,7 +52,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/timseagren/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
