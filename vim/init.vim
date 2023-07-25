@@ -35,6 +35,7 @@ else
     Plug 'itchyny/vim-gitbranch'
     Plug 'pangloss/vim-javascript'
     Plug 'elzr/vim-json'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
     " Language specific
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -44,6 +45,7 @@ else
     Plug 'morhetz/gruvbox'
     Plug 'https://github.com/octol/vim-cpp-enhanced-highlight.git'
     Plug 'https://github.com/vim-python/python-syntax.git'
+    Plug 'dhruvasagar/vim-table-mode'
 
     " Colorschemes
     Plug 'sjl/badwolf'
@@ -113,6 +115,7 @@ else
 
     let g:go_def_mode='gopls'
     let g:go_info_mode='gopls'
+    let g:go_fmt_command = "gofmt"
 
     nmap <silent> <leader>gd :GoDef<CR>
     nmap <silent> <leader>gdp :GoDefPop<CR>
@@ -150,6 +153,13 @@ else
     nmap <silent> <leader>rr :Semshi rename<CR>
     nmap <silent> <leader>ee :Semshi error<CR>
     nmap <silent> <leader>ge :Semshi goto error<CR>
+    nmap <silent> <Tab> :Semshi goto name next<CR>
+    nmap <silent> <S-Tab> :Semshi goto name prev<CR>
+    nmap <silent> <leader>c :Semshi goto class next<CR>
+    nmap <silent> <leader>C :Semshi goto class prev<CR>
+    nmap <silent> <leader>f :Semshi goto function next<CR>
+    nmap <silent> <leader>F :Semshi goto function prev<CR>
+    nmap <silent> <leader>gu :Semshi goto unresolved first<CR>
+    nmap <silent> <leader>gp :Semshi goto parameterUnused first<CR>
     " Semshi Config
-
 endif

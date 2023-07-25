@@ -11,4 +11,17 @@ function kc () {
   kubectl config use-context $1;
   source ${HOME}/.p10k.zsh
 }
+
+function rr_dry () {
+  for file in $(rg "$1" -l); do
+    gsed -e "s/$1/$2/g" $file;
+  done
+}
+
+function rr () {
+  for file in $(rg "$1" -l); do
+    gsed -i "s/$1/$2/g" $file;
+  done
+}
+
 eval "$(/opt/homebrew/bin/brew shellenv)"

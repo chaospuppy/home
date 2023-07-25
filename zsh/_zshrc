@@ -2,7 +2,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 EDITOR=/usr/bin/nvim
 KREW_ROOT=$HOME/.krew
-PATH=$PATH:${KREW_ROOT:-$HOME/.krew}/bin:/opt/local/sbin:/usr/local/bin:/usr/bin
+PATH=$PATH:${KREW_ROOT:-$HOME/.krew}/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:${HOME}/.local/lib/:${HOME}/.local/bin/
 
 #pyenv settings
 export PYENV_ROOT="$HOME/.pyenv"
@@ -21,6 +21,7 @@ SAVEHIST=5000
 HISTSIZE=1000
 HISTFILESIZE=2000
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+export GPG_TTY=$TTY
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -35,6 +36,14 @@ alias k=kubectl
 # Eth
 alias solidity="docker run -v ${HOME}/workspace/solidity:/sources --rm ethereum/solc:stable -o /sources/output --abi --bin $@"
 alias geth="docker run -v ~/.ethereum/:/root/.ethereum --rm -p 30303:30303 -p 8545:8545 ethereum/client-go:stable $@"
+
+# Work
+alias dns-proxy="ssh ib-staging -D 12345 -q -N"
+alias dns-proxy-prod="ssh ib-prod -D 12345 -q -N"
+
+# Terragrunt/Terraform
+alias tfc='find . -name ".terraform.lock.hcl" -type f -prune -exec rm -rf {} \;'
+alias tgc='find . -type d -name ".terragrunt-cache" -prune -exec rm -rf {} \;'
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -99,3 +108,5 @@ source $HOME/.lima/completion.zsh.inc
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+export PATH="$HOME/.poetry/bin:$PATH"
