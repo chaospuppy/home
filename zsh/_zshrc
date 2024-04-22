@@ -39,11 +39,19 @@ alias geth="docker run -v ~/.ethereum/:/root/.ethereum --rm -p 30303:30303 -p 85
 
 # Work
 alias dns-proxy="ssh ib-staging -D 12345 -q -N"
+alias dns-proxy-yoshi="ssh ib-yoshi -D 12345 -q -N"
+alias dns-proxy-bbci="sshuttle --dns -vr bb-ci 192.168.23.0/24 --ssh-cmd 'ssh -i ~/.ssh/id_rsa'"
 alias dns-proxy-prod="ssh ib-prod -D 12345 -q -N"
+
+alias readme='curl -LO https://repo1.dso.mil/big-bang/apps/library-charts/gluon/-/raw/master/docs/README.md.gotmpl && curl -LO https://repo1.dso.mil/big-bang/apps/library-charts/gluon/-/raw/master/docs/.helmdocsignore && curl -LO https://repo1.dso.mil/big-bang/apps/library-charts/gluon/-/raw/master/docs/_templates.gotmpl && docker run --rm -v "`pwd`:/helm-docs" -u $(id -u) jnorwood/helm-docs:v1.10.0 -s file -t /helm-docs/README.md.gotmpl -t /helm-docs/_templates.gotmpl --dry-run > README.md && rm .helmdocsignore README.md.gotmpl _templates.gotmpl'
 
 # Terragrunt/Terraform
 alias tfc='find . -name ".terraform.lock.hcl" -type f -prune -exec rm -rf {} \;'
 alias tgc='find . -type d -name ".terragrunt-cache" -prune -exec rm -rf {} \;'
+alias cdtf="cd $HOME/projects/p1/platform-one/private/ironbank/terraform"
+alias cdtg="cd $HOME/projects/p1/platform-one/private/ironbank/terragrunt"
+alias cdbs="cd $HOME/projects/p1/platform-one/private/ironbank/bootstrap"
+alias cdval="cd $HOME/projects/p1/platform-one/private/ironbank/values"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then

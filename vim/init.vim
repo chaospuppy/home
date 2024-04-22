@@ -126,10 +126,11 @@ else
     let g:LanguageClient_serverCommands = {
                 \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
                 \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
+                \ 'python': ['pyls']
                 \ }
 
     let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
-    let g:LanguageClient_settingsPath = '/home/parallels/.config/nvim/settings.json'
+    let g:LanguageClient_settingsPath = '${HOME}/.config/nvim/settings.json'
     set completefunc=LanguageClient#complete
     set formatexpr=LanguageClient_textDocument_rangeFormatting()
 
