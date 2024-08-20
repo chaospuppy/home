@@ -9,7 +9,6 @@ export PATH="$HOME/.tfenv/bin:$PATH"
 
 function kc () {
   kubectl config use-context $1;
-  source ${HOME}/.p10k.zsh
 }
 
 function rr_dry () {

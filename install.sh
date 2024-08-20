@@ -38,6 +38,7 @@ function install_commands() {
 
     # Install and update all plugins
     declare -a cmds=(
+        "git"
         "nvim"
         "tree"
         "htop"
@@ -48,11 +49,13 @@ function install_commands() {
         "kube-ps1"
         "docker"
         "lima"
+        "yarn"
+        "cargo"
     )
     for cmd in "${cmds[@]}"; do
       command -v "$cmd" > /dev/null
       if [ $? -ne 0 ]; then
-	echo " Missing $cmd - installing\r" | tee -a $logfile
+        echo " Missing $cmd - installing\r" | tee -a $logfile
         brew install $cmd
       fi
       printf " Located %s\n" "$cmd"
@@ -68,8 +71,8 @@ function install_commands() {
 
 function install_alacritty() {
   mkdir -p ${HOME}/.config/alacritty/
-  if [ ! -f ${HOME}/.config/alacritty/alacritty.yml ]; then
-    ln -s ${PWD}/alacritty/alacritty.yml ${HOME}/.config/alacritty/alacritty.yml
+  if [ ! -f ${HOME}/.config/alacritty/alacritty.toml ]; then
+    ln -s ${PWD}/alacritty/alacritty.toml ${HOME}/.config/alacritty/alacritty.toml
   fi
 }
 
@@ -77,7 +80,6 @@ function install_zsh_preferences() {
   declare -a files=(
     ".zshrc"
     ".zprofile"
-    ".zlogin"
   )
   for file in "${files[@]}"; do
     echo $file
@@ -98,10 +100,48 @@ function install_ohmyzsh() {
 }
 
 function install_powerlevel10k() {
-  brew install romkatv/powerlevel10k/powerlevel10k
+  brew install powerlevel10k
   echo "restart zsh by running 'exec zsh', and then run 'p10k configure' to manually configure p10k perferences"
 }
 
+function install_brew {
+    command -v "brew" > /dev/null
+    if [ $? -ne 0 ]; then
+      echo " Missing brew - installing\r" | tee -a $logfile
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+    printf " Located brew\n"
+}
+
+function install_completions {
+  mkdir -p ~/.kube/completion.zsh.inc
+  mkdir -p ~/.lima/completion.zsh.inc
+
+  kubectl completion zsh > ~/.kube/completion.zsh.inc
+  limactl completion zsh > ~/.lima/completion.zsh.inc
+}
+
+function install_languageclient {
+  ~/.vim/plugged/LanguageClient-neovim/install.sh
+}
+
+function install_global_python {
+  pyenv install 3.12.2
+}
+
+function install_pip_dependencies {
+  declare -a pip_pkgs=(
+    "neovim"
+    "pynvim"
+    "ipython"
+  )
+  for pkg in "${pip_pkgs[@]}"; do
+    echo "installing $pkg with pip"
+    pip install $pkg
+  done
+}
+
+install_brew
 install_commands
 install_nvim
 install_tmux
@@ -109,4 +149,6 @@ install_zsh_preferences
 install_alacritty
 install_ohmyzsh
 install_powerlevel10k
-
+install_completions
+install_languageclient
+install_global_python
