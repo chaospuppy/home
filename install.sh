@@ -34,8 +34,15 @@ function install_tmux() {
   fi
 }
 
-function install_commands() {
+function install_lvim_and_config() {
+  LV_BRANCH='release-1.4/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.4/neovim-0.9/utils/installer/install.sh)
+  if [ -f ${HOME}/.config/lvim/config.lua ]; then
+    rm ${HOME}/.config/lvim/config.lua
+  fi
+  ln -s $PWD/lvim/config.lua ${HOME}/.config/lvim/config.lua | tee -a $logfile
+}
 
+function install_commands() {
     # Install and update all plugins
     declare -a cmds=(
         "git"
@@ -51,7 +58,33 @@ function install_commands() {
         "lima"
         "yarn"
         "cargo"
+        "awscli"
+        "chainctl"
+        "helm"
+        "k3s"
+        "oras"
+        "rust"
+        "terraform-docs"
+        "tree-sitter"
+        "uds"
+        "ripgrep"
+        "zarf"
+        "crane"
+        "lazygit"
     )
+
+    # Tap required formula repos
+    declare -a formula_repos=(
+      "chainguard-dev/tap"
+      "defenseunicorns/tap"
+      "hashicorp/tap"
+    )
+
+    for formula in "${formula_repos[@]}"; do
+      echo "tapping $formula"
+      brew tap $formula
+    done
+
     for cmd in "${cmds[@]}"; do
       command -v "$cmd" > /dev/null
       if [ $? -ne 0 ]; then
@@ -82,12 +115,13 @@ function install_zsh_preferences() {
     ".zprofile"
   )
   for file in "${files[@]}"; do
+    newfile=$(echo $file | gsed -e 's/\./_/g')
     echo $file
     if [ ! -f ${HOME}/$file ]; then
-      if [ command gsed -v 1>/dev/null 2>&1 ]; then
-        ln -s ${PWD}/zsh/`echo $file | gsed -e 's/\./_/g'` ${HOME}/$file
+      if [ command gsed -v 1>/dev/null 2>/dev/null ]; then
+        ln -s ${PWD}/zsh/$newfile ${HOME}/$file
       else
-        ln -s ${PWD}/zsh/`echo $file | sed -e 's/\./_/g'` ${HOME}/$file
+        ln -s ${PWD}/zsh/$newfile ${HOME}/$file
       fi
     else
       echo "${HOME}/$file already exists"
@@ -152,3 +186,4 @@ install_powerlevel10k
 install_completions
 install_languageclient
 install_global_python
+install_lvim_and_config
