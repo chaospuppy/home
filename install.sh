@@ -4,11 +4,11 @@ mkdir -p $HOME/.dotfiles
 
 function install_nvim() {
     # Create sylink for vim configuration
-    if [ ! -d $HOME/.dotfiles/vim-config ]; then
-        ln -s ${PWD}/vim $HOME/.dotfiles/vim-config
-    else
-        printf "vim-config exists - no need to copy it\n"
-    fi
+    # if [ ! -d $HOME/.dotfiles/vim-config ]; then
+    #     ln -s ${PWD}/vim $HOME/.dotfiles/vim-config
+    # else
+    #     printf "vim-config exists - no need to copy it\n"
+    # fi
 
     # Grab vim-plug
     printf "Installing |vim-plug|...\n"
