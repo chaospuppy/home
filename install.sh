@@ -4,11 +4,11 @@ mkdir -p $HOME/.dotfiles
 
 function install_nvim() {
     # Create sylink for vim configuration
-    # if [ ! -d $HOME/.dotfiles/vim-config ]; then
-    #     ln -s ${PWD}/vim $HOME/.dotfiles/vim-config
-    # else
-    #     printf "vim-config exists - no need to copy it\n"
-    # fi
+    if [ ! -d $HOME/.dotfiles/vim-config ]; then
+        ln -s ${PWD}/vim $HOME/.dotfiles/vim-config
+    else
+        printf "vim-config exists - no need to copy it\n"
+    fi
 
     # Grab vim-plug
     printf "Installing |vim-plug|...\n"
@@ -71,6 +71,10 @@ function install_commands() {
         "zarf"
         "crane"
         "lazygit"
+        "alacritty"
+        "font-meslo-for-powerlevel30k"
+        "git-credential-manager"
+        "gopls"
     )
 
     # Tap required formula repos
@@ -117,14 +121,19 @@ function install_zsh_preferences() {
   for file in "${files[@]}"; do
     newfile=$(echo $file | gsed -e 's/\./_/g')
     echo $file
-    if [ ! -f ${HOME}/$file ]; then
+    if [ -f ${HOME}/$file ]; then
+      mv ${HOME}/$file "${HOME}/$file.old"
       if [ command gsed -v 1>/dev/null 2>/dev/null ]; then
         ln -s ${PWD}/zsh/$newfile ${HOME}/$file
       else
         ln -s ${PWD}/zsh/$newfile ${HOME}/$file
       fi
     else
-      echo "${HOME}/$file already exists"
+      if [ command gsed -v 1>/dev/null 2>/dev/null ]; then
+        ln -s ${PWD}/zsh/$newfile ${HOME}/$file
+      else
+        ln -s ${PWD}/zsh/$newfile ${HOME}/$file
+      fi
     fi
   done
 }
@@ -145,11 +154,12 @@ function install_brew {
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
     printf " Located brew\n"
+    export PATH=$PATH:/opt/homebrew/bin
 }
 
 function install_completions {
-  mkdir -p ~/.kube/completion.zsh.inc
-  mkdir -p ~/.lima/completion.zsh.inc
+  mkdir -p ~/.kube/
+  mkdir -p ~/.lima/
 
   kubectl completion zsh > ~/.kube/completion.zsh.inc
   limactl completion zsh > ~/.lima/completion.zsh.inc
