@@ -75,6 +75,8 @@ function install_commands() {
         "font-meslo-for-powerlevel30k"
         "git-credential-manager"
         "gopls"
+        "jq"
+        "yq"
     )
 
     # Tap required formula repos
