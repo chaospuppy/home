@@ -77,6 +77,7 @@ function install_commands() {
         "gopls"
         "jq"
         "yq"
+        "node"
     )
 
     # Tap required formula repos

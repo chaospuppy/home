@@ -26,7 +26,6 @@ else
     Plug 'itchyny/lightline.vim'
     Plug 'tomtom/tcomment_vim'
     Plug 'easymotion/vim-easymotion'
-    Plug 'airblade/vim-gitgutter'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
