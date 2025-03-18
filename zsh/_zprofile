@@ -11,6 +11,13 @@ function kc () {
   kubectl config use-context $1;
 }
 
+function ask() {
+  IP=${USE_IP:-"192.168.0.125"}
+  PORT=${USE_PORT:-"11434"}
+  MODEL=${USE_MODEL:-"deepseek-coder-v2-16b-lite-instruct-q8-fix:latest"}
+  curl --silent http://$IP:$PORT/api/generate --data "{ \"model\": \"$MODEL\", \"prompt\": \"$1\", \"stream\": false }" | jq -r '.response'
+}
+
 function rr_dry () {
   for file in $(rg "$1" -l); do
     gsed -e "s/$1/$2/g" $file;

@@ -8,6 +8,13 @@ lvim.plugins = {
   { "tomasiser/vim-code-dark" },
   { "sainnhe/gruvbox-material" },
   { "fatih/vim-go" },
+  { "David-Kunz/gen.nvim",
+    opts = {
+      host = "192.168.0.125",
+      model = "deepseek-coder-v2",
+      port = "11434"
+    }
+  },
   { "airblade/vim-gitgutter" },
   -- { "iamcco/markdown-preview.nvim",
   --   build = "cd app && npx --yes yarn install"

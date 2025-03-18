@@ -115,7 +115,7 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # Personal zshrc
 eval "$(/opt/homebrew/bin/brew shellenv)"
-EDITOR=/usr/bin/lvim
+export EDITOR=/Users/timseagren/.local/bin/lvim
 
 # pyenv settings
 export PYENV_ROOT="$HOME/.pyenv"
