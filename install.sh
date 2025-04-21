@@ -2,7 +2,7 @@
 
 mkdir -p $HOME/.dotfiles
 
-function install_nvim() {
+function install_nvchad() {
     # Create sylink for vim configuration
     if [ ! -d $HOME/.dotfiles/vim-config ]; then
         ln -s ${PWD}/vim $HOME/.dotfiles/vim-config
@@ -190,7 +190,7 @@ function install_pip_dependencies {
 
 install_brew
 install_commands
-install_nvim
+install_nvchad
 install_tmux
 install_zsh_preferences
 install_alacritty

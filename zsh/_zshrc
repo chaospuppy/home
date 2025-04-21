@@ -115,7 +115,7 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # Personal zshrc
 eval "$(/opt/homebrew/bin/brew shellenv)"
-export EDITOR=/Users/timseagren/.local/bin/lvim
+export EDITOR="$(which nvim)"
 
 # pyenv settings
 export PYENV_ROOT="$HOME/.pyenv"
@@ -140,8 +140,8 @@ HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # Alias definitions for vim
-alias vi=lvim
-alias vim=lvim
+alias vi=nvim
+alias vim=nvim
 
 # DevOps
 alias k=kubectl
