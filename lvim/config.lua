@@ -10,8 +10,8 @@ lvim.plugins = {
   { "fatih/vim-go" },
   { "David-Kunz/gen.nvim",
     opts = {
-      host = "192.168.0.125",
-      model = "deepseek-coder-v2",
+      host = "10.0.0.151",
+      model = "gemma3:12b",
       port = "11434"
     }
   },

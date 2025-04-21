@@ -12,7 +12,7 @@ function kc () {
 }
 
 function ask() {
-  IP=${USE_IP:-"192.168.0.125"}
+  IP=${USE_IP:-"10.0.0.151"}
   PORT=${USE_PORT:-"11434"}
   MODEL=${USE_MODEL:-"deepseek-coder-v2-16b-lite-instruct-q8-fix:latest"}
   curl --silent http://$IP:$PORT/api/generate --data "{ \"model\": \"$MODEL\", \"prompt\": \"$1\", \"stream\": false }" | jq -r '.response'
