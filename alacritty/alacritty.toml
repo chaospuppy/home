@@ -1,5 +1,8 @@
 [general]
 live_config_reload = true
+import = [
+  "~/.config/alacritty/themes/themes/spacegray.toml"
+]
 
 [bell]
 animation = "EaseOutExpo"
