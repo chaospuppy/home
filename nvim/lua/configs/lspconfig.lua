@@ -3,7 +3,7 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 
-local servers = { "html", "cssls" , "gopls", "bashls", "yamlls", "terraformls"}
+local servers = { "html", "cssls", "gopls", "bashls", "yamlls", "terraformls", "tflint" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -19,7 +19,7 @@ lspconfig.yamlls.setup {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
-  settings = {}
+  settings = {},
 }
 
 -- configuring single server, example: typescript

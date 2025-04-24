@@ -4,6 +4,7 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     terraform = { "tofu_fmt" },
+    ["terraform-vars"] = { "tofu_fmt" },
   },
 
   format_on_save = {
