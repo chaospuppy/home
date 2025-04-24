@@ -3,6 +3,7 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
+    yaml = { "prettier" },
     terraform = { "tofu_fmt" },
     ["terraform-vars"] = { "tofu_fmt" },
   },
