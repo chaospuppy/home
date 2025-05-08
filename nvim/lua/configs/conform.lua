@@ -3,9 +3,19 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
-    yaml = { "prettier" },
+    yaml = { "yamlfmt" },
     terraform = { "tofu_fmt" },
     ["terraform-vars"] = { "tofu_fmt" },
+  },
+
+  -- Prettier configuration options
+  formatters = {
+    yamlfmt = {
+      prepend_args = {
+        "-formatter",
+        "retain_line_breaks_single=true",
+      },
+    },
   },
 
   format_on_save = {
