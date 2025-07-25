@@ -3,9 +3,11 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
+    xml = { "xmlformatter" },
     yaml = { "yamlfmt" },
     terraform = { "tofu_fmt" },
     ["terraform-vars"] = { "tofu_fmt" },
+    -- python = { "black" },
   },
 
   -- Prettier configuration options
