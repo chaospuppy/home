@@ -14,4 +14,12 @@ M.base46 = {
 	-- },
 }
 
+-- set commentstring for terraform files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "terraform",
+  callback = function()
+    vim.bo.commentstring = "# %s"
+  end,
+})
+
 return M

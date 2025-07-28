@@ -7,6 +7,15 @@ return {
   },
 
   {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
+
+  {
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
