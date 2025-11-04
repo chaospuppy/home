@@ -62,6 +62,33 @@ lspconfig.helm_ls.setup {
 --   capabilities = nvlsp.capabilities,
 -- }
 
+-- Enhanced pyright configuration
+-- lspconfig.pyright.setup {
+--   on_attach = nvlsp.on_attach,
+--   on_init = nvlsp.on_init,
+--   capabilities = nvlsp.capabilities,
+--   settings = {
+--     python = {
+--       analysis = {
+--         autoSearchPaths = true,
+--         diagnosticMode = "workspace",
+--         useLibraryCodeForTypes = true,
+--         typeCheckingMode = "basic",
+--       },
+--     },
+--   },
+--   root_dir = function(fname)
+--     return lspconfig.util.root_pattern(
+--       "pyproject.toml",
+--       "setup.py",
+--       "setup.cfg",
+--       "requirements.txt",
+--       "Pipfile",
+--       ".git"
+--     )(fname)
+--   end,
+-- }
+
 -- configuring single server, example: typescript
 -- lspconfig.ts_ls.setup {
 --   on_attach = nvlsp.on_attach,
