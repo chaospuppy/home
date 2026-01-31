@@ -1,8 +1,7 @@
-export PYENV_ROOT="$HOME/.pyenv"
 export GOPATH=${HOME}/go
 export GOBIN=$HOME/go/bin
 export GO111MODULE=auto
-export PATH="${GOBIN}:$PYENV_ROOT/bin:$PATH"
+export PATH="${GOBIN}:$PATH"
 
 # Terraform
 export PATH="$HOME/.tfenv/bin:$PATH"
@@ -29,5 +28,3 @@ function rr () {
     gsed -i "s/$1/$2/g" $file;
   done
 }
-
-eval "$(/opt/homebrew/bin/brew shellenv)"

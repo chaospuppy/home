@@ -117,14 +117,8 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export EDITOR="$(which nvim)"
 
-# pyenv settings
-export PYENV_ROOT="$HOME/.pyenv"
-
-export PATH=$PATH:${HOME}/.poetry/bin:$(pyenv root)/shims:$(pyenv root)/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:${HOME}/.local/lib/:${HOME}/.local/bin/:/usr/local/go/bin:${HOMEBREW_PREFIX}/opt/socket_vmnet/bin/
-
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
-fi
+# setup mise-en-place
+eval "$(/opt/homebrew/bin/mise activate zsh)"
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

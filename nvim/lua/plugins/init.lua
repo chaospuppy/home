@@ -59,9 +59,6 @@ return {
   },
   {
     "fatih/vim-go",
-    ensure_installed = {
-      "gopls",
-    },
     lazy = false,
   },
 }

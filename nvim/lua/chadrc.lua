@@ -23,6 +23,10 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.diagnostic.config { virtual_text = false } -- Optional: Disable inline virtual text
-vim.cmd "autocmd CursorHold * lua vim.diagnostic.open_float()"
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float()
+  end,
+})
 
 return M
