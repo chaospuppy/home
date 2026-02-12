@@ -108,6 +108,27 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+autoload -Uz add-zsh-hook
+
+_update_tmux_border_for_kube() {
+    # Skip if not inside tmux
+    [[ -z "$TMUX" ]] && return
+
+    ctx=$(kubectl config current-context 2>/dev/null)
+
+    # Only update if context changed (avoid unnecessary tmux calls)
+    [[ "$ctx" == "$_LAST_KUBE_CTX" ]] && return
+    _LAST_KUBE_CTX="$ctx"
+
+    case "$ctx" in
+      *prod*)  color="red" ;;
+      *staging*)  color="yellow" ;;
+      *)       color="colour51" ;;
+    esac
+    tmux set -g pane-active-border-style "bg=colour236,fg=$color"
+}
+
+add-zsh-hook precmd _update_tmux_border_for_kube
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
