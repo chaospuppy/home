@@ -29,6 +29,7 @@ lspconfig.yamlls.setup {
         -- ["https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/cert-manager.io/certificate_v1.json"] = "*certificate.yaml",
         -- Use local schema files (if you've downloaded them)
         -- [vim.fn.expand("~/.config/nvim/schemas/crd-schemas/prometheus-operator.json")] = "*prometheus*.yaml",
+        ["http://raw.githubusercontent.com/zarf-dev/zarf/refs/heads/main/zarf.schema.json"] = "zarf.yaml",
       },
     },
   },
