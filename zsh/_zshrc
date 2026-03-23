@@ -123,6 +123,7 @@ _update_tmux_border_for_kube() {
     case "$ctx" in
       *prod*)  color="red" ;;
       *staging*)  color="yellow" ;;
+      *homelab*)  color="green" ;;
       *)       color="colour51" ;;
     esac
     tmux set -g pane-active-border-style "bg=colour236,fg=$color"
