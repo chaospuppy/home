@@ -16,6 +16,7 @@ local options = {
       prepend_args = {
         "-formatter",
         "retain_line_breaks_single=true",
+        "retain_line_breaks=true",
       },
     },
   },
